@@ -1,0 +1,64 @@
+package loan.demo;
+
+import java.util.Scanner;
+
+public class Bank {
+
+public  void installmentAmount() {
+	int Residual_value= 0;
+	 Scanner sc = new Scanner(System.in);
+	 System.out.println("loan Amount" );
+    float Loan_Amount = sc.nextFloat();
+    System.out.println("Rate_of_Interest" );
+    
+	  float Rate_of_Interest = sc.nextFloat();
+	 System.out.println("Tenure" );
+	 double Tenure = sc.nextFloat();
+	 System.out.println("Number_of_Installments" );
+	 float Number_of_Installments = sc.nextFloat();
+	 
+	 for(int i1=0;i1<12;i1++)
+	 {
+		 System.out.println(i1);
+		 Loan_Amount =(float) getinsta(Loan_Amount,Rate_of_Interest ,Tenure, Number_of_Installments);
+	 }
+}
+
+double getinsta(float Loan_Amount, float Rate_of_Interest, double Tenure, float Number_of_Installments) {
+	int Residual_value= 0;
+	float a = ((Rate_of_Interest/100)/Number_of_Installments);
+	float a1=  Loan_Amount *a;
+	float b = (1 + a);
+	double c =  Math.pow(b, Tenure);
+	double d = (a1 -((Residual_value*a))/c);
+	double e = (1 - (1/c));
+	double f = d/e ;
+	System.out.println("Installment Amount" +f);
+//	double interest= Loan_Amount *((Rate_of_Interest/100)/Number_of_Installments);
+	double principle = f - a1;
+	double os= Loan_Amount-principle;
+	System.out.println(Loan_Amount+" "+a1+" "+principle+" "+f);
+	System.out.println(os);
+	return os;
+}
+		 
+	
+//public  void installmentAmount1(float  Loan_Amount,float Rate_of_Interest,double Tenure,float Number_of_Installments)
+//{
+//	double interest= Loan_Amount *((Rate_of_Interest/100)/Number_of_Installments);
+//	double principle = f - interest;
+//	double os= Loan_Amount-principle;
+//}
+
+ public static void main(String[] args) {
+	
+	 Bank bank = new Bank();
+	 bank.installmentAmount();
+	
+	 
+	 
+//	 float Number_of_Installments = sc.nextFloat();
+//	 bank.installmentAmount(Loan_Amount,Rate_of_Interest,Tenure,Number_of_Installments);
+	 	 
+}
+}
